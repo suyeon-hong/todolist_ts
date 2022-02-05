@@ -10,6 +10,7 @@
     "@types/node": "^16.7.13",
     "@types/react": "^17.0.20",
     "@types/react-dom": "^17.0.9",
+    "commitizen": "^4.2.4",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "5.0.0",
@@ -39,5 +40,13 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "commitizen-emoji": "^1.0.5"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/commitizen-emoji"
+    }
   }
 }
