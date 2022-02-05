@@ -1,0 +1,102 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+ul,
+ol {
+	list-style: none;
+}
+
+button {
+	border: none;
+	background: transparent;
+	cursor: pointer;
+}
+
+button,
+input {
+	border: none;
+	border-radius: 5px;
+}
+
+input:focus,
+button:focus {
+	outline: none;
+}
+
+body {
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.wrapper {
+	width: 500px;
+	height: 600px;
+	background: #ddd;
+	border-radius: 5px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+}
+
+.userInput {
+	display: flex;
+}
+
+input {
+	display: block;
+	width: 300px;
+	height: 40px;
+	padding: 0 10px;
+	font: 16px/40px "arial";
+	margin-bottom: 5px;
+}
+
+.userInput button {
+	width: 100px;
+	margin-left: 5px;
+	margin-bottom: 5px;
+	font: 20px/1 "arial";
+	background: #f7f7f7;
+}
+
+.userInput button:hover {
+	background: lightgrey;
+}
+
+.todolistContainer {
+	width: 80%;
+	height: 60%;
+	overflow-y: auto;
+}
+
+.todolistContainer li {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.todolistContainer span {
+	flex: 2;
+	background: #fff;
+	padding: 10px 20px;
+	border-right: 1px solid #f7f7f7;
+}
+
+.todolistContainer button {
+	flex: 0.3;
+	background: #f7f7f7;
+	border-radius: 0;
+	border: none;
+	padding: 13px 20px;
+}
+
+.todolistContainer button:hover {
+	background: lightgrey;
+}
