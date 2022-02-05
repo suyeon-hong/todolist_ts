@@ -1,6 +1,7 @@
 import { ChangeEvent, FormEvent, useRef, useState } from "react";
 import "./App.css";
 import { IInput, IList } from "./interface";
+import Todo from "./components/Todo";
 
 function App() {
 	const nextId = useRef(1);
@@ -27,7 +28,10 @@ function App() {
 			deadline: "",
 		});
 		nextId.current++;
-		console.log(todolist);
+	};
+
+	const removeTodo = (id: number): void => {
+		setTodolist((list) => list.filter((list) => list.id !== id));
 	};
 
 	return (
@@ -52,11 +56,9 @@ function App() {
 				<button>등록</button>
 			</form>
 			<ul className="todolistContainer">
-				<li>
-					<span>할 일</span>
-					<span>1일 남음</span>
-					<button>X</button>
-				</li>
+				{todolist.map((list: IList) => (
+					<Todo key={list.id} list={list} removeTodo={removeTodo} />
+				))}
 			</ul>
 		</div>
 	);
