@@ -9,7 +9,7 @@
 1. 레파지토리 클론 다운받기
 
 ```
-git clone https://github.com/suyeon-hong/phone-book.git
+git clone https://github.com/suyeon-hong/todolist_ts.git
 ```
 
 2. 패키지 설치하기
