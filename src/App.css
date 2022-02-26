@@ -34,7 +34,7 @@ body {
 	align-items: center;
 }
 
-.wrapper {
+.todoContainer {
 	width: 500px;
 	height: 600px;
 	background: #ddd;

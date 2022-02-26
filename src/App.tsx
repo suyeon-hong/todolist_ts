@@ -1,67 +1,77 @@
-import { ChangeEvent, FormEvent, useRef, useState } from "react";
+import { ChangeEvent, useState, useRef, useEffect } from "react";
 import "./App.css";
-import { IInput, IList } from "./interface";
-import Todo from "./components/Todo";
+import { IInput, IList } from "interface";
+import Todo from "components/Todo";
 
-function App() {
+const TODOS = "todos";
+
+const App = () => {
 	const nextId = useRef(1);
-	const [userInput, setUserInput] = useState<IInput>({
+	const [input, setInput] = useState<IInput>({
 		task: "",
 		deadline: "",
 	});
-	const [todolist, setTodolist] = useState<IList[]>([]);
-	const { task, deadline } = userInput;
+	const [todoList, setTodoList] = useState<IList[]>([]);
 
-	const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
-		const { name, value } = e.target;
-		setUserInput((input) => ({ ...input, [name]: value }));
+	const onChange = (e: ChangeEvent<HTMLInputElement>): void => {
+		setInput((input) => ({ ...input, [e.target.name]: e.target.value }));
 	};
 
-	const addTodo = (e: FormEvent<HTMLFormElement>): void => {
-		e.preventDefault();
-		if (task === "" || deadline === "") return;
-		setTodolist((todolist) =>
-			todolist.concat([{ id: nextId.current, ...userInput }])
-		);
-		setUserInput({
+	const addTodo = (): void => {
+		if (input.task === "" || input.deadline === "") return;
+		setTodoList((list) => [...list, { id: nextId.current, ...input }]);
+		setInput(() => ({
 			task: "",
 			deadline: "",
-		});
-		nextId.current++;
+		}));
+		nextId.current += 1;
 	};
 
 	const removeTodo = (id: number): void => {
-		setTodolist((list) => list.filter((list) => list.id !== id));
+		setTodoList((list) => list.filter((li) => li.id !== id));
 	};
 
+	useEffect(() => {
+		const savedList = localStorage.getItem(TODOS);
+
+		if (typeof savedList === "string") {
+			const parsedList = JSON.parse(savedList);
+			setTodoList(parsedList);
+		}
+	}, []);
+
+	useEffect(() => {
+		localStorage.setItem(TODOS, JSON.stringify(todoList));
+	}, [todoList]);
+
 	return (
-		<div className="wrapper">
-			<form className="userInput" onSubmit={addTodo}>
+		<div className="todoContainer">
+			<div className="userInput">
 				<div>
 					<input
 						type="text"
 						name="task"
-						value={task}
-						onChange={handleChange}
+						value={input.task}
+						onChange={onChange}
 						placeholder="할 일을 입력하세요"
 					/>
 					<input
 						type="number"
 						name="deadline"
-						value={deadline}
-						onChange={handleChange}
+						value={input.deadline}
+						onChange={onChange}
 						placeholder="마감기한을 입력하세요"
 					/>
 				</div>
-				<button>등록</button>
-			</form>
-			<ul className="todolistContainer">
-				{todolist.map((list: IList) => (
-					<Todo key={list.id} list={list} removeTodo={removeTodo} />
+				<button onClick={addTodo}>등록</button>
+			</div>
+			<div className="todolistContainer">
+				{todoList.map((list: IList) => (
+					<Todo list={list} key={list.id} removeTodo={removeTodo} />
 				))}
-			</ul>
+			</div>
 		</div>
 	);
-}
+};
 
 export default App;
