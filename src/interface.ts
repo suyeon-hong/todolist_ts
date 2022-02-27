@@ -1,8 +1,5 @@
-export interface IInput {
+export interface List {
+	id: number;
 	task: string;
 	deadline: string;
-}
-
-export interface IList extends IInput {
-	id: number;
 }
