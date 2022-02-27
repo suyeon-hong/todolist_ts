@@ -39,6 +39,7 @@ const App = () => {
 	};
 
 	const addTodo = () => {
+		console.log(input);
 		if (input === "") {
 			alert("할 일을 입력해 주세요");
 			return;
@@ -153,9 +154,7 @@ const App = () => {
 						onChange={(date) => setDeadline(date)}
 					/>
 				</div>
-				<button className="addBtn" onClick={addTodo}>
-					등록
-				</button>
+				<button className="addBtn">등록</button>
 			</form>
 			<div className="todolistContainer">
 				{todoList.map((list: List) => (
