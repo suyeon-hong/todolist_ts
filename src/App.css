@@ -76,7 +76,7 @@ input {
 }
 
 .userInput .addBtn:hover {
-	background: #fff;
+	background: #ccc;
 }
 
 .todolistContainer {
@@ -106,11 +106,13 @@ input {
 .todolistContainer span {
 	height: 100%;
 	padding: 10px 20px;
+	font-size: 16px;
 }
 
 .todolistContainer span:last-of-type {
 	min-width: 144px;
 	color: #555;
+	font-size: 14px;
 }
 
 .todolistContainer .deleteBtn {
@@ -126,4 +128,42 @@ input {
 .todolistContainer .deleteBtn:hover {
 	color: tomato;
 	transform: translateY(-50%) scale(1.1);
+}
+
+@media screen and (max-width: 768px) {
+	.todoContainer {
+		width: 80vw;
+	}
+	.userInput {
+		flex-direction: column;
+		align-items: center;
+		width: 80%;
+	}
+
+	.userInput .addBtn {
+		margin: 0;
+		width: 70px;
+		height: 30px;
+		font-size: 16px;
+	}
+
+	input {
+		width: 100%;
+		font-size: 14px;
+	}
+
+	.todolistContainer li {
+		flex-direction: column;
+		padding: 10px 30px 10px 0;
+	}
+
+	.todolistContainer span {
+		width: 100%;
+		padding: 0 10px;
+		font-size: 14px;
+	}
+
+	.todolistContainer span:last-of-type {
+		font-size: 12px;
+	}
 }
