@@ -14,7 +14,7 @@ const TODOS = "todos";
 const App = () => {
 	const nextId = useRef(0);
 	const [input, setInput] = useState<string>("");
-	const [todoList, setTodoList] = useState<IList[]>([]);
+	const [todoList, setTodoList] = useState<List[]>([]);
 	const [deadline, setDeadline] = useState<Date | null>(new Date());
 
 	registerLocale("ko", ko);

@@ -19,6 +19,7 @@ button,
 input {
 	border: none;
 	border-radius: 5px;
+	font-family: inherit;
 }
 
 input:focus,
@@ -32,10 +33,17 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	font-family: "Noto Sans KR", sans-serif;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
 }
 
 .todoContainer {
-	width: 500px;
+	width: 60vw;
 	height: 600px;
 	background: #ddd;
 	border-radius: 5px;
@@ -54,50 +62,68 @@ input {
 	width: 300px;
 	height: 40px;
 	padding: 0 10px;
-	font: 16px/40px "arial";
+	font-size: 16px;
+	line-height: 40px;
 	margin-bottom: 5px;
 }
 
-.userInput button {
+.userInput .addBtn {
 	width: 100px;
 	margin-left: 5px;
 	margin-bottom: 5px;
-	font: 20px/1 "arial";
+	font-size: 18px;
 	background: #f7f7f7;
 }
 
-.userInput button:hover {
-	background: lightgrey;
+.userInput .addBtn:hover {
+	background: #fff;
 }
 
 .todolistContainer {
 	width: 80%;
 	height: 60%;
 	overflow-y: auto;
+	border-radius: 5px;
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
+
+.todolistContainer::-webkit-scrollbar {
+	display: none;
 }
 
 .todolistContainer li {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	margin-bottom: 2px;
+	border-radius: 10px;
+	background: #f7f7f7;
+	position: relative;
+	padding-right: 30px;
+	margin-bottom: 5px;
 }
 
 .todolistContainer span {
-	flex: 2;
-	background: #fff;
+	height: 100%;
 	padding: 10px 20px;
-	border-right: 1px solid #f7f7f7;
 }
 
-.todolistContainer button {
-	flex: 0.3;
-	background: #f7f7f7;
-	border-radius: 0;
-	border: none;
-	padding: 13px 20px;
+.todolistContainer span:last-of-type {
+	min-width: 144px;
+	color: #555;
 }
 
-.todolistContainer button:hover {
-	background: lightgrey;
+.todolistContainer .deleteBtn {
+	position: absolute;
+	top: 50%;
+	right: 10px;
+	font-size: 20px;
+	color: #bbb;
+	transform: translateY(-50%);
+	transition: 0.4s ease;
+}
+
+.todolistContainer .deleteBtn:hover {
+	color: tomato;
+	transform: translateY(-50%) scale(1.1);
 }

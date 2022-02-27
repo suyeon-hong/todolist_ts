@@ -1,5 +1,6 @@
 import React from "react";
 import { List } from "../interface";
+import { TiDeleteOutline } from "react-icons/ti";
 
 interface Props {
 	list: List;
@@ -12,7 +13,7 @@ const Todo = ({ list, removeTodo }: Props) => {
 			<span>{list.task}</span>
 			<span>{list.deadline}</span>
 			<button className="deleteBtn" onClick={() => removeTodo(list.id)}>
-				X
+				<TiDeleteOutline />
 			</button>
 		</li>
 	);
