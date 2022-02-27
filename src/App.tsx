@@ -39,7 +39,10 @@ const App = () => {
 	};
 
 	const addTodo = () => {
-		if (input === "") return;
+		if (input === "") {
+			alert("할 일을 입력해 주세요");
+			return;
+		}
 		const Month = deadline!.getMonth() + 1;
 		const Date = deadline?.getDate();
 
